@@ -1,1 +1,6 @@
-suds-py3
+pytest>=2.9
+pytest-flakes
+pytest-sugar
+pytest-pep8
+pytest-cov
+codecov
