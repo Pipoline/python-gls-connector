@@ -1,0 +1,25 @@
+language: python
+python:
+  - "3.7"
+
+# command to install dependencies
+install:
+  - pip install -r requirements.txt
+
+# command to run tests
+
+script:
+  - py.test --cov gls_connector  --cov-report term gls_connector -x
+
+after_success:
+  - codecov
+
+deploy:
+  provider: pypi
+  user: pipo
+  password:
+    secure: kjbx3FZmm4+4gE9K1gViI5nCMoS0PAyoPGIRmbvJjt8bIvLeRTSwsIsHUJA9XhG1+9mKwsNgx8KZ4yTEeGAyb2anYy2hXdl+F1VEEXSXVvLxV+WIx4e4HBFequjskvhuKp2dsQ2k/hMOyqnoonrXa7gtpSAf5udmvdU4+i7jmNIWgEuF6vKhKChwzHwKkd7/jdAgdzxz6zgUSniAtq6Qy/bppyR9EX8p3rZOsH346KaxjGmXDMyS0JwBlPGVkKJ/826B/VXkT6ogwXCjIEFPbttneJpiCXR7z0bZ2XfcpUJjY5d4rOp1aCs5C0KvLWBhK8aMy4mE+0n5WldXn63xMKTO+nA+5m0FnPOKYKvDuYgJ7AdR1tD2Q3jqI2IenJ1FsgrYqwPComwBXIzM+WFesIo1E7uVAwDp6uk981WEZupLM60+dmc3kq52HDcdwnDtoRbQHM5Bx0xfzlUzh8Qam+JRukClTxPcnsriKsjgurnPdv2ozMsjMmZRms4urlgbNyVFoXYhCJkgFE/Bc/Ggumzm6lSDFnjPrDWCC49kcBmenZlfYpvWlMThWeTagfEn4j1Xv37/PFvzuc+E+eGVb0GIUgEwjRaMcsCESHpP4FgC2CFYUPFj7MVFQDBHoAJGmFHEw2lSg7KGIs4sJFygNzF2GHGMgkIuPjn3wANEYYM=
+  on:
+    tags: true
+  distributions: bdist_wheel
+  skip_existing: true

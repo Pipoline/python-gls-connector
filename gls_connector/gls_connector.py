@@ -12,12 +12,10 @@ from suds.client import Client
 @dataclass
 class PackageSender:
     name: str
-
     street: str
     city: str
     zip_code: str
     country_code: str
-
     contact: str
     phone: str
     mail: str
@@ -127,14 +125,18 @@ class GlsConnector:
                         senderid=self.config.sender_id,
                         sender_name=order.sender.name, sender_address=order.sender.street,
                         sender_city=order.sender.city, sender_zipcode=order.sender.zip_code,
-                        sender_country=order.sender.country_code, sender_contact=order.sender.contact,
+                        sender_country=order.sender.country_code,
+                        sender_contact=order.sender.contact,
                         sender_phone=order.sender.phone, sender_email=order.sender.mail,
                         consig_name=order.recipient.name, consig_address=order.recipient.street,
                         consig_city=order.recipient.city, consig_zipcode=order.recipient.zip_code,
-                        consig_country=order.recipient.country_code, consig_contact=order.recipient.contact,
+                        consig_country=order.recipient.country_code,
+                        consig_contact=order.recipient.contact,
                         consig_phone=order.recipient.phone, consig_email=order.recipient.mail,
-                        pcount=str(order.count_of_parcels), pickupdate=str(order.pick_up_date.isoformat()),
-                        content=order.content, clientref=str(order.client_reference), codamount=order.cod_amount,
+                        pcount=str(order.count_of_parcels),
+                        pickupdate=str(order.pick_up_date.isoformat()),
+                        content=order.content, clientref=str(order.client_reference),
+                        codamount=order.cod_amount,
                         # codref=order.cod_reference, services=order.services,
                         codref=order.cod_reference, services=sr_array,
                         printertemplate=order.printer_template.value,
