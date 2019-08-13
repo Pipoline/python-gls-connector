@@ -10,7 +10,7 @@ install:
 # command to run tests
 
 script:
-  - gem install travisgem install travis
+  - py.test --cov gls_connector  --cov-report term gls_connector -x
 
 after_success:
   - codecov
